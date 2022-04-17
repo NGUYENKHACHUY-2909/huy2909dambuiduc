@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <meta name="google-site-verification" content="iMDZ4ax-3xUyBswxayxPem1jRMWRbcg8u7JOVrNII10" />
+    <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FKKCQJGS8N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FKKCQJGS8N');
+</script>
+    <title>Chill music</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+            background-color: #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(to bottom right,  pink, rgb(223, 17, 51));
+
+        }
+        #cd{
+            height: 150px;
+            width: 150px;
+            background-size: cover;
+        }
+        #header{
+            width: 50%;
+        }
+        #two{
+            width:48%;
+        }
+        @keyframes quay{
+            20%{
+                transform: rotate(60deg);
+            }
+            40%{
+                transform: rotate(150deg);
+            }
+            60%{
+                transform: rotate(250deg);
+            }
+            80%{
+                transform: rotate(320deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        @media only screen and (max-width: 500px){
+            audio{
+                width: 250px;
+            }
+            #header{
+                width: 100%;
+            }
+            #two{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="one" style="width:100%; height: 410px;" class="d-flex justify-content-center">
+        <div class="d-flex flex-column align-items-center" style="background-color: #ffff;  border-radius: 5px;" id="header">
+            <!-- header -->
+            <div class="header text-center" style="margin-top:30px">
+                <h6 style="color: red;" onclick="auto()">Now playing:</h6>
+                <h3 id="name">Chờ anh nhé</h3>
+                <button class="btn btn-primary rounded-circle" onclick="auto()">Phát</button>
+            </div>
+    
+            <!-- CD -->
+            <div id="control-cd" class="d-flex flex-column align-items-center justify-content-center">
+                <div id="cd" class="rounded-circle" style="background-image: url(https://avatar-ex-swe.nixcdn.com/playlist/2016/06/27/f/6/6/2/1467024597988_500.jpg) ;"></div>
+            </div>
+    
+            <!-- control-audio -->
+            <div id="control-audio" style="margin-top: 20px">
+                <div class="btn">
+                    <i class="fas fa-undo"></i>
+                </div>
+                <div class="btn">
+                    <i class="fas fa-backward"></i>
+                </div>
+                <div class="btn">
+                    <i class="fas fa-pause" id="pause" onclick="stop()"></i>
+                    <i class="fas fa-play" onclick="start()" id="play"></i>
+                </div>
+                <div class="btn">
+                    <i class="fas fa-forward"></i>
+                </div>
+                <div class="btn">
+                    <i class="fas fa-random"></i>
+                </div>
+            </div>
+            <div id="audio">
+                <audio src="../nhac/chieuhomay.mp3" controls></audio>
+            </div>
+        </div>
+    </div>
+    <div id="two" style="height: 270px; overflow-y: scroll" class="">
+        <div id="list" class="d-flex flex-column align-items-center justify-content-center">
+            <!-- <div class="row" id="playlist" style="width:100%; background-color:#ffff; margin-bottom: 20px;">
+                <div class="song  d-flex justify-content-around align-items-center">
+                    <div class="avarta rounded-circle" style="background-image: url(https://avatar-ex-swe.nixcdn.com/playlist/2016/06/27/f/6/6/2/1467024597988_500.jpg); height: 70px; width: 70px; background-size: cover;"></div>
+                    <div class="info">
+                        <h4 style="margin-bottom:0px">Tên bài hát</h4>
+                        <p style="margin-bottom:0px">Ca sĩ/nhóm nhạc</p>
+                    </div>
+                    <div class="option">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div id="three" style="position: fixed; top: 40px; left: 15%; font-size: 24px; color: #0d008057;" class="d-flex align-items-center">
+        <i class="fas fa-clock"></i>
+        <div id="time">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("pause").style.display="none";
+        var array = [];
+        function song(name,singer,path,bg,time){
+            this.name=name,
+            this.singer=singer,
+            this.path=path,
+            this.bg=bg
+            this.time=time
+        }
+        var song1 = new song("Chờ anh nhé","Hoàng Dũng", "../nhac/choanhnhe.mp3","https://avatar-ex-swe.nixcdn.com/playlist/2016/06/27/f/6/6/2/1467024597988_500.jpg",333000)
+        var song2 = new song("Chiều hôm ấy","Jaykii","../nhac/chieuhomay.mp3","https://avatar-ex-swe.nixcdn.com/song/2017/07/02/c/1/4/f/1498982534096_640.jpg",326000)
+        var song3 = new song("Khoảng cách","Khánh Phong","../nhac/khoangcach.mp3","https://i.ytimg.com/vi/ICWG2_p8Iqw/hqdefault.jpg",278000)
+        var song4 = new song("Ngắm hoa lệ rơi","Châu Khải Phong","../nhac/ngamhoa.mp3","https://avatar-ex-swe.nixcdn.com/song/2018/03/16/5/d/e/c/1521183758171_640.jpg",326000)
+        var song5 =new song("Khoảng cách đôi ta","Châu Khải Phong","../nhac/doita.mp3","https://avatar-ex-swe.nixcdn.com/playlist/2013/11/06/c/c/a/8/1383710653826_500.jpg",344000)
+        var song6 = new song("Mưa của ngày mưa","Hồ Quang Hiếu","../nhac/mua.mp3","https://i.ytimg.com/vi/YaIPkWHAl84/maxresdefault.jpg",290000)
+        var song7 =new song("Sài gòn mưa rơi","Hồ Quang Hiếu","../nhac/saigon.mp3","https://anvietnam.files.wordpress.com/2018/11/saigon-in-rainy-season-2018-2.png",320000)
+        var song8 =new song("Màu nước mắt","Trung Quân","../nhac/maunuocmat.mp3","https://i.ytimg.com/vi/kgfNvOTPAJo/maxresdefault.jpg",300000)
+        var song9 =new song("Lạ lùng","Vũ","../nhac/lalung.mp3","https://avatar-ex-swe.nixcdn.com/song/2018/01/26/1/8/9/0/1516930244148_640.jpg",270000)
+        var song10 =new song("Yêu đơn phương là gì","Nguyễn Khắc Huy","../nhac/donphuong.mp3","https://img3.thuthuatphanmem.vn/uploads/2019/10/10/yeu-don-phuong-la-mot-loai-thiet-thoi_105816829.png",220000)
+        array.push(song1, song2,song3,song4,song5,song6,song7,song8,song9,song10);
+        var listSong ="";
+        document.getElementsByClassName("list").innerHTML = "";
+        for(let i=0; i<array.length; i++){
+            listSong+= `        
+                <div class="row" id="playlist" style="width:100%; background-color:#ffff; margin-bottom: 20px;" onclick="chay(${i})">
+                    <div class="song  d-flex justify-content-around align-items-center">
+                        <div class="avarta rounded-circle" style="background-image: url('${array[i].bg}'); height: 70px; width: 70px; background-size: cover;"></div>
+                        <div class="info">
+                            <h4 style="margin-bottom:0px">${array[i].name}</h4>
+                            <p style="margin-bottom:0px">${array[i].singer}</p>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+        document.getElementById("list").innerHTML = listSong;
+        function chay(index){
+            document.getElementById("audio").innerHTML = `<audio src="${array[index].path}" id="music" controls></audio>`;
+            document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[index].bg}) ;"></div>`;
+            document.getElementById("name").innerHTML = `${array[index].name}`;
+            document.getElementById("control-cd").style.animation="quay 3s infinite linear"
+            document.getElementById("play").style.display="none";
+            document.getElementById("pause").style.display="block";
+            document.getElementById("music").play();
+            document.getElementById("").innerHTML = `                   
+                <i class="fas fa-pause" id="pause" onclick="stop()"></i>
+                <i class="fas fa-play" id="play"></i>
+            `
+
+        }
+        function start(){
+            document.getElementById("play").style.display="none";
+            document.getElementById("pause").style.display="block";
+            document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${song1.bg}) ;"></div>`;
+            document.getElementById("audio").innerHTML = `<audio src="${song1.path}" id="music" controls></audio>`
+            document.getElementById("control-cd").style.animation="quay 3s infinite linear";
+            document.getElementById("music").play();
+        }
+        function stop(){
+            document.getElementById("music").pause();
+            document.getElementById("audio").innerHTML = `<audio src="${song1.path}" id="music" controls></audio>`
+            document.getElementById("play").style.display="block";
+            document.getElementById("pause").style.display="none";
+            document.getElementById("control-cd").style.animation="none";
+        }
+
+
+        function auto(){
+            document.getElementById("play").style.display="none";
+            document.getElementById("pause").style.display="block";
+            document.getElementById("audio").innerHTML = `<audio src="${array[0].path}" id="music" controls></audio>`
+            document.getElementById("music").play();
+            document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[0].bg}) ;"></div>`;
+            document.getElementById("name").innerHTML = `${array[0].name}`;
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[1].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[1].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[1].name}`;
+            },array[0].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[2].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[2].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[2].name}`;
+            },array[0].time+array[1].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[3].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[3].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[3].name}`;
+            },array[0].time+array[1].time+array[2].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[4].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[4].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[4].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[5].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[5].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[5].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[6].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[6].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[6].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time+array[5].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[7].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[7].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[7].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time+array[5].time+array[6].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[8].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[8].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[8].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time+array[5].time+array[6].time+array[7].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[9].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[9].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[9].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time+array[5].time+array[6].time+array[7].time+array[8].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[10].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[10].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[10].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time+array[5].time+array[6].time+array[7].time+array[8].time+array[9].time)
+            setTimeout(function(){
+                document.getElementById("audio").innerHTML = `<audio src="${array[11].path}" id="music" controls></audio>`
+                document.getElementById("music").play();
+                document.getElementById("control-cd").innerHTML = `<div id="cd" class="rounded-circle" style="background-image: url(${array[11].bg}) ;"></div>`;
+                document.getElementById("name").innerHTML = `${array[11].name}`;
+            },array[0].time+array[1].time+array[2].time+array[3].time+array[4].time+array[5].time+array[6].time+array[7].time+array[8].time+array[9].time+array[10].time)
+        }
+        function time(){
+            setInterval(function(){
+                var a = new Date().getHours();
+                var b = new Date().getMinutes();
+                var c = new Date().getSeconds();
+                document.getElementById("time").innerHTML = a+ ":"+b+":"+c;
+            })
+        }
+        time();
+    </script>
+</body>
+</html>
